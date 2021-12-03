@@ -23,7 +23,7 @@ def json2BioNLP(file):
         tail = "T"+str(count1)+" NA "+str(triple["tail"]["start"])+" " +str(triple["tail"]["start"]+triple["tail"]["length"])+" "+triple["tail"]["word"]+"\n"
         a1.write(tail)
         count1+=1
-        relation = "E"+str(count2)+" "+triple["relation"]+" subject:T"+str(t2)+" obj:T"+str(t1)+"\n"
+        relation = "E"+str(count2)+" "+triple["relation"]+" subj:T"+str(t2)+" obj:T"+str(t1)+"\n"
         a2.write(relation)
 def helper():
     json2BioNLP("relations_test.json")
@@ -33,7 +33,7 @@ def helper():
     classifier = kindred.RelationClassifier()
     classifier.train(corpus)
     classifier.predict(predicCorpus)
-    f1score  = kindred.evaluate(corpus,predicCorpus,metric='f1score')
+    f1score = kindred.evaluate(corpus,predicCorpus,metric='f1score')
 
 
 
